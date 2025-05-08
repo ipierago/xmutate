@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Dist (cargo xtask)",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["run", "-p", "xtask", "--", "dist"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Test mutators (cargo xtask)",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["run", "-p", "xtask", "--", "test-mutators"],
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

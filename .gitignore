@@ -1,32 +1,15 @@
-# Rust build artifacts
+# Ignore compiled output
 /target/
 
-# Incremental compilation files
-**/*.rs.bk
-**/*.rmeta
+# Ignore build artifacts
+/dist/
 
-# Rust core dumps and debug output
-*.dSYM/
-*.stackdump
-*.log
-
-# IDEs and editors
-.idea/
-.vscode/
-*.swp
-*.swo
-*.bak
-
-# By default, Cargo.lock should be committed for binaries, but not for libraries.
-# Uncomment the line below if you are writing a library.
-/Cargo.lock
-
-# OS-specific
+# Ignore temporary editor/project files
+**/*.swp
 .DS_Store
-Thumbs.db
 
-# GitHub CLI cache (optional)
-.gh/
-
-# Test coverage / instrumentation
-coverage/
+# VSCode: ignore everything except shared config
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
