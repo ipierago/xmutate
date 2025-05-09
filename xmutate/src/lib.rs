@@ -1,14 +1,11 @@
+use serde_json::{Map, Value};
 use std::fs;
-use serde_json::{Value, Map};
 
 pub mod error;
 pub mod mutator;
-pub mod engine;
-pub mod io;
 
 #[cfg(test)]
 pub mod test_util;
-
 
 pub fn run(
     mutator_name: &str,
@@ -32,9 +29,8 @@ pub fn run_in_memory(
     let mutator = mutator::get_mutator(mutator_name)
         .ok_or_else(|| format!("Unknown mutator: {}", mutator_name))?;
 
-    let param_pairs: Vec<(String, Value)> = params.iter()
-        .map(|(k, v)| (k.clone(), v.clone()))
-        .collect();
+    let param_pairs: Vec<(String, Value)> =
+        params.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
 
     let result = mutator.run(input, &param_pairs)?;
 

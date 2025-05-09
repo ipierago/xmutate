@@ -5,30 +5,15 @@
         "name": "Debug xmutate (CLI)",
         "type": "lldb",
         "request": "launch",
-        "cargo": {
-          "args": ["run", "--bin", "xmutate", "--"]
-        },
+        "program": "${workspaceFolder}/target/debug/xmutate",
         "args": [
           "run",
           "--mutator", "summarize",
-          "--input", "data.json",
-          "--output", "out.json",
+          "--input", "tests/tmp/input.json",
+          "--output", "tests/tmp/output.json",
           "--param", "group_by=category"
         ],
         "cwd": "${workspaceFolder}/xmutate",
-        "env": {},
-        "terminal": "integrated"
-      },
-      {
-        "name": "Debug xtask",
-        "type": "lldb",
-        "request": "launch",
-        "cargo": {
-          "args": ["run", "-p", "xtask", "--"]
-        },
-        "args": ["dist"],
-        "cwd": "${workspaceFolder}",
-        "env": {},
         "terminal": "integrated"
       }
     ]
