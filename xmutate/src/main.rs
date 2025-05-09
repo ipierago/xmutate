@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use log::info;
 
 #[derive(Parser)]
 #[command(name = "xmutate", version, author)]
@@ -38,17 +39,23 @@ fn parse_key_val(s: &str) -> Result<(String, serde_json::Value), String> {
     Ok((key, value))
 }
 
-
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    env_logger::init();
+    info!("main()");
+
     let cli = Cli::parse();
 
     match cli.command {
-        Command::Run { mutator, input, output, param } => {
-            let param_map: serde_json::Map<String, serde_json::Value> =
-                param.into_iter().collect();
+        Command::Run {
+            mutator,
+            input,
+            output,
+            param,
+        } => {
+            let param_map: serde_json::Map<String, serde_json::Value> = param.into_iter().collect();
             xmutate::run(&mutator, &input, &output, &param_map)?;
         }
     }
-    
+
     Ok(())
 }
